@@ -1,0 +1,116 @@
+.timeline-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.timeline-container {
+    position: relative;
+    border-left: 3px solid #e0e0e0;
+    margin-left: 20px;
+    padding-left: 30px;
+}
+
+.memory-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.memory-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.memory-date {
+    display: inline-block;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.date-hidden {
+    visibility: hidden;
+    height: 10px;
+    margin-bottom: 0;
+}
+
+.memory-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: transform 0.2s ease;
+}
+
+.memory-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.memory-content h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-size: 1.25rem;
+}
+
+.memory-content p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.memory-img {
+    height: 350px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.memory-img:hover {
+    opacity: 0.95;
+    transform: scale(1.02);
+}
+
+.image-gallery::-webkit-scrollbar {
+    height: 6px;
+}
+.image-gallery::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+.image-gallery::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
