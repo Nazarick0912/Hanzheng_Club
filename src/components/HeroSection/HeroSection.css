@@ -41,15 +41,16 @@
 }
 
 .button-primary {
-    background-color: #ff6b6b;
+    background-color: transparent;
     color: #fff;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
 .button-primary:hover {
-    background-color: #ff5252;
+    background-color: transparent;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    color: rgb(117, 117, 117);
 }
 
 @media screen and (max-width: 768px) {

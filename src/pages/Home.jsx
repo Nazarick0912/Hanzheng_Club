@@ -1,6 +1,5 @@
 import hanzheng_pic from '../assets/hanzheng.jpg'
 import HeroSection from '../components/HeroSection/HeroSection'
-import Timeline from '../components/Timeline/Timeline'
 import '../css/Home.css'
 
 function Home() {
@@ -104,8 +103,7 @@ function Home() {
                     })}
                 </div>
             </section>
-            
-            <Timeline />
+        
         </div>
     )
 }
