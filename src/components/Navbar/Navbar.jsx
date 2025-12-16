@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
   const [menu, setMenu] = useState("home");
 
+  const navigate = useNavigate();
+
   return (
     <div className='navbar'>
-      <div className='nav-logo'>
-        <img src="/hanzheng.jpg" alt="Club Logo" />
+      <div className='nav-logo' onClick={() => {
+            setMenu("home");
+            navigate('/');
+        }}>
+        <img src="/hanzheng.jpg" alt="Club Logo"></img>
         <p>Hanzheng Club</p>
       </div>
       

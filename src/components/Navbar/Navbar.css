@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-
+    cursor: pointer;
 }
 
 .nav-logo img {
