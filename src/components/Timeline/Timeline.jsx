@@ -12,11 +12,46 @@ const Timeline = () => {
                 "/memories/Oct2024-1-3.jpg"
             ]
         },
-        {date: "Nov 2024", title: "USM Y1S1 W1", desc: "First week of lecture"},
-        {date: "Nov 2024", title: "邪恶炸鸡皮", desc: "Delicious Fried Chicken Skin"},
-        {date: "Dec 2024", title: "Q1 Mookata", desc: "Super full"},
-        {date: "Jan 2025", title: "2025 - Happy New Year!", desc: "Celebrating new year at Straits Quay"},
-        {date: "Jan 2025", title: "Meet with CS Buddy", desc: "Having dinner and chit chat with buddies"},
+        {
+            date: "Nov 2024", 
+            title: "USM Y1S1 W1", 
+            desc: "First week of lecture",
+            
+        },
+        {
+            date: "Nov 2024", 
+            title: "邪恶炸鸡皮", 
+            desc: "Delicious Fried Chicken Skin",
+            images: [
+                "/memories/Nov2024-1-1.jpg",
+                "/memories/Nov2024-1-2.jpg",
+                "/memories/Nov2024-1-3.jpg"
+            ]
+        },
+        {
+            date: "Dec 2024", 
+            title: "Q1 Mookata", 
+            desc: "Super full",
+            images: [
+                "/memories/Dec2024-1-1.jpg"
+            ]
+        },
+        {
+            date: "Jan 2025", 
+            title: "2025 - Happy New Year!", 
+            desc: "Celebrating new year at Straits Quay",
+            images: [
+                "/memories/Jan2025-1-1.jpg"
+            ]
+        },
+        {
+            date: "Jan 2025", 
+            title: "Meet with CS Buddy", 
+            desc: "Having dinner and chit chat with buddies",
+            images: [
+                "/memories/Jan2025-2-1.jpg"
+            ]
+        },
     ];
 
     return (

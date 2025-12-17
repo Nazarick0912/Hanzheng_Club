@@ -29,7 +29,7 @@ function Home() {
             desc: "The founder of HanZheng Club", 
             personality: [
                 "Shuai",
-                "Sao"
+                "2727"
             ]
         },
         {
@@ -74,7 +74,7 @@ function Home() {
             desc: "The founder of HanZheng Club", 
             personality: [
                 "Shuai",
-                "Sao"
+                "Clash Royale King"
             ]
         },
     ];
