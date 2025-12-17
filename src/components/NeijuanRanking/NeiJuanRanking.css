@@ -1,0 +1,114 @@
+.neijuan-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa; 
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.neijuan-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.neijuan-subtitle {
+    color: #7f8c8d;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.ranking-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.rank-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.rank-card:hover {
+    transform: translateY(-10px);
+}
+
+.rank-1 {
+    order: 2;
+    transform: scale(1.1);
+    border-color: #ffd700;
+    z-index: 2;
+}
+
+.rank-2 {
+    border-color: #c0c0c0;
+    order: 1;
+}
+
+.rank-3 {
+    border-color: #cd7f32;
+    order: 3;
+}
+
+.rank-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+}
+
+.rank-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.rank-1 .rank-badge { background: #ffd700; color: #333; }
+.rank-2 .rank-badge { background: #c0c0c0; color: #333; }
+.rank-3 .rank-badge { background: #cd7f32; color: white; }
+
+.rank-info h3 {
+    margin: 0;
+    color: #333;
+}
+
+.neijuan-label {
+    display: block;
+    font-size: 0.9rem;
+    margin: 5px 0 15px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.score-box {
+    background: #f1f3f5;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+}
