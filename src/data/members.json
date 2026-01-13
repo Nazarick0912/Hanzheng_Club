@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Han Zheng",
+        "marks": 74,
+        "image": "/hanzheng.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Chin Qian",
+        "marks": 96,
+        "image": "/chinqian.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Goo",
+        "marks": 74,
+        "image": "/goo.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "2727"
+        ]
+    },
+    {
+        "name": "Elson",
+        "marks": 74,
+        "image": "/elson.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Han Lim",
+        "marks": 90,
+        "image": "/hanlim.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Ivan",
+        "marks": 82,
+        "image": "/ivan.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Jun Hao",
+        "marks": 77,
+        "image": "/junhao.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Sadona",
+            "Sao"
+        ]
+    },
+    {
+        "name": "Kyzer",
+        "marks": 80,
+        "image": "/kyzer.jpg",
+        "role": "Founder",
+        "desc": "The founder of HanZheng Club",
+        "personality": [
+            "Shuai",
+            "Clash Royale King"
+        ]
+    }
+]
