@@ -7,21 +7,25 @@ import GalleryPage from './pages/GalleryPage';
 import EventsPage from './pages/EventsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import Subscribe from './pages/Subscribe';
+import ContactPage from './pages/ContactPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <main>
-       <Routes>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/subcribe" element={<Subscribe />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }
