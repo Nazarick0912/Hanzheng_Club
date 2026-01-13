@@ -1,10 +1,10 @@
 [
     {
         "name": "Han Zheng",
-        "marks": 74,
+        "marks": 100,
         "image": "/hanzheng.jpg",
-        "role": "Founder",
-        "desc": "The founder of HanZheng Club",
+        "role": "Soul of HanZheng Club",
+        "desc": "The one who are always hamsap",
         "personality": [
             "Shuai",
             "Sao"
@@ -12,7 +12,7 @@
     },
     {
         "name": "Chin Qian",
-        "marks": 96,
+        "marks": 95,
         "image": "/chinqian.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -23,18 +23,18 @@
     },
     {
         "name": "Goo",
-        "marks": 74,
+        "marks": 95,
         "image": "/goo.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
         "personality": [
-            "Shuai",
+            "Gaming",
             "2727"
         ]
     },
     {
         "name": "Elson",
-        "marks": 74,
+        "marks": 95,
         "image": "/elson.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -45,40 +45,40 @@
     },
     {
         "name": "Han Lim",
-        "marks": 90,
+        "marks": 1000,
         "image": "/hanlim.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
         "personality": [
-            "Shuai",
+            "Juan",
             "Sao"
         ]
     },
     {
         "name": "Ivan",
-        "marks": 82,
+        "marks": 97.5,
         "image": "/ivan.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
         "personality": [
-            "Shuai",
+            "好人",
             "Sao"
         ]
     },
     {
         "name": "Jun Hao",
-        "marks": 77,
+        "marks": 95,
         "image": "/junhao.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
         "personality": [
-            "Sadona",
-            "Sao"
+            "Clarkson",
+            "打瓦"
         ]
     },
     {
         "name": "Kyzer",
-        "marks": 80,
+        "marks": 95,
         "image": "/kyzer.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
