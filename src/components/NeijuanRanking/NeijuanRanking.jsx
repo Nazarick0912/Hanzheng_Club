@@ -1,18 +1,10 @@
 import React from 'react';
 import './NeijuanRanking.css';
+import members from '../../data/members.json';
+
+
 
 const NeijuanRanking = () => {
-    const members = [
-        { name: "Han Zheng", marks: 74, image: "/hanzheng.jpg" },
-        { name: "Chin Qian", marks: 96, image: "/chinqian.jpg" },
-        { name: "Elson", marks: 74, image: "/elson.jpg" },
-        { name: "Goo", marks: 74, image: "/goo.jpg" },
-        { name: "Ivan", marks: 82, image: "/ivan.jpg" },
-        { name: "Han Lim", marks: 90, image: "/hanlim.jpg" },
-        { name: "Jun Hao", marks: 77, image: "/junhao.jpg" },
-        { name: "Kyzer", marks: 80, image: "/kyzer.jpg" }
-    ];
-
     const topThree = members.sort((a, b) => b.marks - a.marks).slice(0, 3);
 
     const getRankTitle = (index) => {
@@ -32,11 +24,11 @@ const NeijuanRanking = () => {
             <div className="ranking-container">
                 {topThree.map((member, index) => (
                     <div key={index} className={`rank-card rank-${index + 1}`}>
-                        
+
                         <div className="rank-badge">#{index + 1}</div>
-                        
+
                         <img src={member.image} alt={member.name} className="rank-avatar" />
-                        
+
                         <div className="rank-info">
                             <h3>{member.name}</h3>
                             <span className="neijuan-label">{getRankTitle(index)}</span>
