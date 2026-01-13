@@ -34,7 +34,7 @@ function Home() {
                                             {per}
                                         </span>
                                     ))}
-                                </div>
+                                </div>                                                                                                  
                             </div>
                         )
                     })}
