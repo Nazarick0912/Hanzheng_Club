@@ -17,9 +17,9 @@ const NeijuanRanking = () => {
 
     return (
         <section className="neijuan-section">
-            <h2 className="neijuan-title">🏆 内卷榜 (CSE241 Test 2)🏆</h2>
+            <h2 className="neijuan-title">🏆 内卷榜 (CAT201 - Overall Mark)🏆</h2>
             <p className="neijuan-subtitle">These people studied while you were sleeping. No excuses allowed.</p>
-            <p className="neijuan-subtitle">Last Updated: 2026-01-13</p>
+            <p className="neijuan-subtitle">Last Updated: 2026-01-23</p>
             
             <div className="ranking-container">
                 {topThree.map((member, index) => (
