@@ -1,7 +1,7 @@
 [
     {
         "name": "Han Zheng",
-        "marks": 100,
+        "marks": 74,
         "image": "/hanzheng.jpg",
         "role": "Soul of HanZheng Club",
         "desc": "The one who are always hamsap",
@@ -12,7 +12,7 @@
     },
     {
         "name": "Chin Qian",
-        "marks": 95,
+        "marks": 78,
         "image": "/chinqian.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -23,7 +23,7 @@
     },
     {
         "name": "Goo",
-        "marks": 95,
+        "marks": 76,
         "image": "/goo.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -34,7 +34,7 @@
     },
     {
         "name": "Elson",
-        "marks": 95,
+        "marks": 75,
         "image": "/elson.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -45,7 +45,7 @@
     },
     {
         "name": "Han Lim",
-        "marks": 1000,
+        "marks": 77,
         "image": "/hanlim.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -56,7 +56,7 @@
     },
     {
         "name": "Ivan",
-        "marks": 97.5,
+        "marks": 78,
         "image": "/ivan.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -67,7 +67,7 @@
     },
     {
         "name": "Jun Hao",
-        "marks": 95,
+        "marks": 72,
         "image": "/junhao.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
@@ -78,7 +78,7 @@
     },
     {
         "name": "Kyzer",
-        "marks": 95,
+        "marks": 81,
         "image": "/kyzer.jpg",
         "role": "Founder",
         "desc": "The founder of HanZheng Club",
