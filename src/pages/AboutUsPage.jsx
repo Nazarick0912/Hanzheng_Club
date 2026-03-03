@@ -25,6 +25,11 @@ const AboutUsPage = () => {
         </div>
       </section>
 
+      {/* Achievement Wall Section */}
+      <section className="about-section achievement-section">
+        <h2>🏆 Achievement Wall</h2>
+        <p className="achievement-intro">Milestones we're proud of — more coming soon!</p>
+      </section>
 
     </div>
   );

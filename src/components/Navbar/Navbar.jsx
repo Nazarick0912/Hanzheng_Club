@@ -1,52 +1,103 @@
-import React, { useState } from 'react'
-import './Navbar.css'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-
   const [menu, setMenu] = useState("home");
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Sync active menu with current route
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/') setMenu('home');
+    else if (path === '/timeline') setMenu('timeline');
+    else if (path === '/gallery') setMenu('gallery');
+    else if (path === '/events') setMenu('events');
+    else if (path === '/about') setMenu('about');
+  }, [location]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const handleNavClick = (menuName) => {
+    setMenu(menuName);
+    setMenuOpen(false);
+  };
 
   return (
     <div className='navbar'>
       <div className='nav-logo' onClick={() => {
         setMenu("home");
+        setMenuOpen(false);
         navigate('/');
       }}>
-        <img src="/hanzheng.jpg" alt="Club Logo"></img>
+        <img src="/hanzheng.jpg" alt="Club Logo" />
         <p>Hanzheng Club</p>
       </div>
 
-      <ul className="nav-menu">
-        <li onClick={() => { setMenu("home") }}>
+      <div
+        className={`hamburger ${menuOpen ? 'active' : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Backdrop overlay for mobile */}
+      {menuOpen && (
+        <div className="nav-backdrop" onClick={() => setMenuOpen(false)}></div>
+      )}
+
+      <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <li onClick={() => handleNavClick("home")}>
           <Link to='/'>Home</Link>
           {menu === "home" ? <hr /> : <></>}
         </li>
-        <li onClick={() => { setMenu("timeline") }}>
+        <li onClick={() => handleNavClick("timeline")}>
           <Link to='/timeline'>Timeline</Link>
           {menu === "timeline" ? <hr /> : <></>}
         </li>
-        <li onClick={() => { setMenu("gallery") }}>
+        <li onClick={() => handleNavClick("gallery")}>
           <Link to='/gallery'>Memory Gallery</Link>
           {menu === "gallery" ? <hr /> : <></>}
         </li>
-        <li onClick={() => { setMenu("events") }}>
+        <li onClick={() => handleNavClick("events")}>
           <Link to='/events'>Events</Link>
           {menu === "events" ? <hr /> : <></>}
         </li>
-        <li onClick={() => { setMenu("about") }}>
+        <li onClick={() => handleNavClick("about")}>
           <Link to='/about'>About Us</Link>
           {menu === "about" ? <hr /> : <></>}
         </li>
 
+        {/* Subscribe button inside mobile menu */}
+        <li className="nav-menu-subscribe">
+          <Link to='/subscribe' onClick={() => setMenuOpen(false)}>
+            <button>Subscribe</button>
+          </Link>
+        </li>
       </ul>
 
       <div className="nav-subcribe">
         <Link to='/subscribe'><button>Subscribe</button></Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

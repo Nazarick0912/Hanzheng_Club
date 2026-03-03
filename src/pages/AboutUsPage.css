@@ -16,6 +16,7 @@
     margin-bottom: 10px;
     background: linear-gradient(135deg, #007bff, #00d2ff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -112,4 +113,11 @@
 .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Achievement Wall ===== */
+.achievement-intro {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 28px;
 }
