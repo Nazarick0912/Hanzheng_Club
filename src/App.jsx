@@ -9,6 +9,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import Subscribe from './pages/Subscribe';
 import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer/Footer';
+import BackToTop from './components/BackToTop/BackToTop';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <BackToTop />
     </Router>
   );
 }
