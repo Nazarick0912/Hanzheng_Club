@@ -35,13 +35,18 @@
     width: 250px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     position: relative;
-    transition: transform 0.3s;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     border: 2px solid transparent;
 }
 
 .rank-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+}
+
+.rank-1:hover {
+    transform: scale(1.1) translateY(-8px);
 }
 
 .rank-1 {
@@ -68,6 +73,11 @@
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #eee;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-card:hover .rank-avatar {
+    transform: scale(1.08);
 }
 
 .rank-badge {
@@ -103,6 +113,50 @@
     margin: 5px 0 15px;
     font-weight: bold;
     color: #e74c3c;
+}
+
+.personality-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.personality-badge {
+    background: #e9ecef;
+    color: #495057;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.badge-shuai:hover, .badge-sao:hover {
+    transform: scale(1.1);
+    background: #ff6b6b;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rank-card, .rank-avatar, .personality-badge {
+        transition: none !important;
+    }
+    .rank-card:hover {
+        transform: none !important;
+    }
+    .rank-1:hover {
+        transform: scale(1.1) !important;
+    }
+    .badge-shuai:hover, .badge-sao:hover {
+        transform: none !important;
+    }
+    .rank-card:hover .rank-avatar {
+        transform: none !important;
+    }
 }
 
 .score-box {

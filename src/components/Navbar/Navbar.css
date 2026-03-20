@@ -60,10 +60,22 @@
 
 .nav-menu hr {
     border: none;
-    width: 80%;
+    width: 0;
     height: 3px;
     border-radius: 10px;
     background: #ff4141;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu li:hover hr,
+.nav-menu li.active hr {
+    width: 80%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu hr {
+        transition: none;
+    }
 }
 
 .nav-subcribe {
@@ -182,6 +194,11 @@
     }
 
     .nav-menu hr {
+        width: 0;
+    }
+
+    .nav-menu li:hover hr,
+    .nav-menu li.active hr {
         width: 40px;
     }
 

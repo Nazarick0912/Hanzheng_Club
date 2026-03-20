@@ -64,25 +64,25 @@ const Navbar = () => {
       )}
 
       <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-        <li onClick={() => handleNavClick("home")}>
+        <li className={menu === "home" ? "active" : ""} onClick={() => handleNavClick("home")}>
           <Link to='/'>Home</Link>
-          {menu === "home" ? <hr /> : <></>}
+          <hr />
         </li>
-        <li onClick={() => handleNavClick("timeline")}>
+        <li className={menu === "timeline" ? "active" : ""} onClick={() => handleNavClick("timeline")}>
           <Link to='/timeline'>Timeline</Link>
-          {menu === "timeline" ? <hr /> : <></>}
+          <hr />
         </li>
-        <li onClick={() => handleNavClick("gallery")}>
+        <li className={menu === "gallery" ? "active" : ""} onClick={() => handleNavClick("gallery")}>
           <Link to='/gallery'>Memory Gallery</Link>
-          {menu === "gallery" ? <hr /> : <></>}
+          <hr />
         </li>
-        <li onClick={() => handleNavClick("events")}>
+        <li className={menu === "events" ? "active" : ""} onClick={() => handleNavClick("events")}>
           <Link to='/events'>Events</Link>
-          {menu === "events" ? <hr /> : <></>}
+          <hr />
         </li>
-        <li onClick={() => handleNavClick("about")}>
+        <li className={menu === "about" ? "active" : ""} onClick={() => handleNavClick("about")}>
           <Link to='/about'>About Us</Link>
-          {menu === "about" ? <hr /> : <></>}
+          <hr />
         </li>
 
         {/* Subscribe button inside mobile menu */}

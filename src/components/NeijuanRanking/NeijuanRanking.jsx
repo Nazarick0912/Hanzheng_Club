@@ -32,6 +32,13 @@ const NeijuanRanking = () => {
                         <div className="rank-info">
                             <h3>{member.name}</h3>
                             <span className="neijuan-label">{getRankTitle(index)}</span>
+                            <div className="personality-badges">
+                                {member.personality?.map((trait, i) => (
+                                    <span key={i} className={`personality-badge badge-${trait.toLowerCase()}`}>
+                                        {trait}
+                                    </span>
+                                ))}
+                            </div>
                             <div className="score-box">
                                 Score: {member.marks}
                             </div>
