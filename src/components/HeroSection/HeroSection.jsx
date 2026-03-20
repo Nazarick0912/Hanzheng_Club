@@ -58,7 +58,7 @@ const HeroSection = () => {
         <div className='hero-container'>
             <ParticleBackground />
             
-            <div className="hero-top-label">
+            <div className={`hero-top-label hero-content-fade ${isTypingComplete ? 'show' : ''}`}>
                 <span>HanZheng Club</span>
             </div>
             
