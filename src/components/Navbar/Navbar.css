@@ -79,7 +79,32 @@
 }
 
 .nav-subcribe {
-    width: 150px;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn-black {
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn-black:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-btn-black:hover {
+        transform: none;
+    }
 }
 
 /* Hide the subscribe li on desktop */
@@ -140,16 +165,23 @@
     .nav-logo p {
         font-size: 24px;
     }
+    .nav-btn-black {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
 }
 
 /* ===== Mobile ===== */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+        order: 3;
     }
-
+    
     .nav-subcribe {
-        display: none;
+        order: 2;
+        margin-left: auto;
+        margin-right: 15px;
     }
 
     .nav-backdrop {
@@ -200,18 +232,5 @@
     .nav-menu li:hover hr,
     .nav-menu li.active hr {
         width: 40px;
-    }
-
-    /* Show subscribe inside mobile menu */
-    .nav-menu-subscribe {
-        display: flex;
-        margin-top: 16px;
-        border-bottom: none !important;
-    }
-
-    .nav-menu-subscribe button {
-        width: 100%;
-        padding: 12px 28px;
-        font-size: 1rem;
     }
 }

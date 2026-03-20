@@ -85,16 +85,10 @@ const Navbar = () => {
           <hr />
         </li>
 
-        {/* Subscribe button inside mobile menu */}
-        <li className="nav-menu-subscribe">
-          <Link to='/subscribe' onClick={() => setMenuOpen(false)}>
-            <button>Subscribe</button>
-          </Link>
-        </li>
       </ul>
 
       <div className="nav-subcribe">
-        <Link to='/subscribe'><button>Subscribe</button></Link>
+        <Link to='/subscribe'><button className="nav-btn-black">Subscribe</button></Link>
       </div>
     </div>
   );
