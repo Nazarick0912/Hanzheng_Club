@@ -1,5 +1,5 @@
 import React from 'react';
-import './NeijuanRanking.css';
+import './NeiJuanRanking.css';
 import membersData from '../../data/members.json';
 
 const NeijuanRanking = () => {
