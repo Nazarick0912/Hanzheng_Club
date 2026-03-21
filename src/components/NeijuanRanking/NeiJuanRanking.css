@@ -1,168 +1,419 @@
 .neijuan-section {
-    padding: 60px 20px;
-    background-color: #f8f9fa; 
-    text-align: center;
-    border-top: 1px solid #ddd;
+    padding: 80px 8% 40px;
+    background-color: #000000;
+    text-align: left;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #ffffff;
+    font-family: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.neijuan-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    /* responsive fallback */
+}
+
+.neijuan-left-column {
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.neijuan-right-column {
+    flex: 1.5;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .neijuan-title {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-weight: 800;
+    font-size: 4.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+    text-shadow: none;
+    max-width: 600px;
 }
 
 .neijuan-subtitle {
-    color: #7f8c8d;
-    margin-bottom: 40px;
-    font-style: italic;
+    color: #888888;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.neijuan-subtitle:last-of-type {
+    margin-bottom: 10px;
+    /* reduced space to admin panel */
 }
 
 .ranking-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 20px; /* Slight increase to match graphical steps */
+    flex-wrap: nowrap;
+    max-width: 1100px;
+    margin: 40px 0 -130px 0; /* Massively overlaps ranking container down into image */
+    position: relative;
+    z-index: 2;
 }
 
-.rank-card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    width: 250px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.podium-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The user stated: "second and 3rd place are the same height which is slightly lower than no1" */
+.podium-group:nth-child(1) { margin-bottom: 25px; } /* 2nd place */
+.podium-group:nth-child(2) { margin-bottom: 65px; } /* 1st place is slightly higher */
+.podium-group:nth-child(3) { margin-bottom: 25px; } /* 3rd place identical to 2nd */
+
+.rank-card {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 35px 25px 25px;
+    width: 250px;
+    position: relative;
+    transition: transform 0.3s ease, background 0.3s ease;
     text-align: center;
-    border: 2px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
 }
 
 .rank-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.rank-1:hover {
-    transform: scale(1.1) translateY(-8px);
+/* physical podium bases (HIDDEN - replaced by image) */
+/* Wipe out physical podium blocks */
+.podium-block { display: none; }
+.block-1 { display: none; }
+.block-2 { display: none; }
+.block-3 { display: none; }
+
+.rank-1 { border: 1px solid rgba(255, 215, 0, 0.3); z-index: 3; }
+.rank-1:hover { transform: translateY(-12px); border: 1px solid rgba(255, 215, 0, 0.6); }
+
+.rank-2 { border: 1px solid rgba(192, 192, 192, 0.2); z-index: 2; }
+
+.rank-3 { border: 1px solid rgba(205, 127, 50, 0.2); z-index: 2; }
+
+/* The overarching structure for the right column custom image logic */
+.custom-podium-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.rank-1 {
-    order: 2;
-    transform: scale(1.1);
-    border-color: #ffd700;
-    z-index: 2;
+.custom-podium-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1; /* Sets the massive image strictly physically underneath the floating cards */
+    margin-top: -120px; /* Huge vertical pull to erase all empty space visually shown in your screenshot! */
+    position: relative;
+    pointer-events: none;
 }
 
-.rank-2 {
-    border-color: #c0c0c0;
-    order: 1;
+.custom-podium-img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 
-.rank-3 {
-    border-color: #cd7f32;
-    order: 3;
-}
 
 .rank-avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 3px solid #eee;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 25px;
+    border: 3px solid #222;
+    transition: border-color 0.3s ease;
 }
 
 .rank-card:hover .rank-avatar {
-    transform: scale(1.08);
+    border-color: #666;
 }
 
 .rank-badge {
     position: absolute;
-    top: -15px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    background: #2c3e50;
-    color: white;
-    width: 40px;
-    height: 40px;
+    background: #000;
+    color: #fff;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-weight: 700;
+    font-size: 1.4rem;
+    border: 2px solid #333;
 }
-
-.rank-1 .rank-badge { background: #ffd700; color: #333; }
-.rank-2 .rank-badge { background: #c0c0c0; color: #333; }
-.rank-3 .rank-badge { background: #cd7f32; color: white; }
 
 .rank-info h3 {
     margin: 0;
-    color: #333;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 .neijuan-label {
     display: block;
-    font-size: 0.9rem;
-    margin: 5px 0 15px;
-    font-weight: bold;
-    color: #e74c3c;
+    font-size: 1.1rem;
+    margin: 10px 0 25px;
+    font-weight: 500;
+    color: #aaaaaa;
 }
 
 .personality-badges {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .personality-badge {
-    background: #e9ecef;
-    color: #495057;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: default;
+    background: transparent;
+    color: #cccccc;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid #333;
+    transition: all 0.2s ease;
 }
 
-.badge-shuai:hover, .badge-sao:hover {
-    transform: scale(1.1);
-    background: #ff6b6b;
-    color: white;
-    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .rank-card, .rank-avatar, .personality-badge {
-        transition: none !important;
-    }
-    .rank-card:hover {
-        transform: none !important;
-    }
-    .rank-1:hover {
-        transform: scale(1.1) !important;
-    }
-    .badge-shuai:hover, .badge-sao:hover {
-        transform: none !important;
-    }
-    .rank-card:hover .rank-avatar {
-        transform: none !important;
-    }
+.personality-badge:hover {
+    background: #333;
+    border-color: #555;
+    color: #fff;
+    /* tactile hover pop */
 }
 
 .score-box {
-    background: #f1f3f5;
-    padding: 8px;
-    border-radius: 8px;
-    font-weight: bold;
-    color: #2c3e50;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 40px;
+    font-weight: 800;
+    color: #000000;
+    font-size: 1.3rem;
+    cursor: default;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.score-box:hover {
+    opacity: 0.8;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+    margin-top: 30px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+}
+
+.admin-title {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #888888;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.admin-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.admin-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #0a0a0a;
+    padding: 10px 16px;
+    border-radius: 16px;
+    border: 1px solid #1a1a1a;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* RESPONSIVE LAYOUT BREAKPOINTS */
+@media (max-width: 1200px) {
+    .neijuan-title {
+        font-size: 3.5rem;
+    }
+
+    .neijuan-left-column {
+        min-width: 300px;
+    }
+
+    .rank-card {
+        width: 200px;
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .neijuan-content {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    .neijuan-left-column {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .neijuan-right-column {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ranking-container {
+        justify-content: center;
+    }
+
+    .admin-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .neijuan-title {
+        font-size: 4rem;
+        letter-spacing: -1.5px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .neijuan-subtitle {
+        text-align: center;
+    }
+
+    .admin-title {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .rank-card {
+        width: 230px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-list {
+        grid-template-columns: 1fr;
+    }
+
+    .neijuan-title {
+        font-size: 3rem;
+        letter-spacing: -1px;
+    }
+
+    .neijuan-section {
+        padding: 40px 5%;
+    }
+}
+
+.admin-item-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #333;
+}
+
+.admin-item-name {
+    font-weight: 500;
+    color: #eeeeee;
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+.admin-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-btn {
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.admin-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.admin-input {
+    width: 45px;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #333;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0;
+    transition: border-color 0.2s ease;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-bottom-color: #fff;
 }
