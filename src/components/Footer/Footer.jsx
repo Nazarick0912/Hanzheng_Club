@@ -1,11 +1,15 @@
 
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './Footer.css';
 import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
+    const location = useLocation();
+    const isHome = location.pathname === '/';
+
     return (
-        <footer className="footer-container">
+        <footer className={`footer-container ${isHome ? 'snap-section' : ''}`}>
             <div className="footer-content">
                 <div className="footer-section">
                     <h3>Hanzheng Club</h3>
