@@ -1,16 +1,36 @@
 import HeroSection from '../components/HeroSection/HeroSection'
 import NeijuanRanking from '../components/NeijuanRanking/NeijuanRanking';
+import React, { useEffect } from 'react';
 import '../css/Home.css'
 import memberData from '../data/members.json';
+import ParticleBackground from '../components/HeroSection/ParticleBackground';
 
 function Home() {
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        const sections = document.querySelectorAll('.snap-section');
+        sections.forEach(sec => observer.observe(sec));
+
+        return () => observer.disconnect();
+    }, []);
 
     const members = memberData;
 
     return (
         <div>
             <HeroSection />
-            <section>
+            <section className="snap-section" style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate' }}>
+                <ParticleBackground />
                 <h1 className="section-title">HanZheng Club</h1>
 
                 <div className="member-container">

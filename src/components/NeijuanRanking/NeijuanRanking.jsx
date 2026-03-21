@@ -16,7 +16,7 @@ const NeijuanRanking = () => {
     }
 
     return (
-        <section className="neijuan-section">
+        <section className="neijuan-section snap-section">
             <h2 className="neijuan-title">🏆 内卷榜 (CAT201 - Overall Mark)🏆</h2>
             <p className="neijuan-subtitle">These people studied while you were sleeping. No excuses allowed.</p>
             <p className="neijuan-subtitle">Last Updated: 2026-01-23</p>

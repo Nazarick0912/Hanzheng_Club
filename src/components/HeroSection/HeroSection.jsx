@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './HeroSection.css';
-import ParticleBackground from './ParticleBackground';
 
 const WORD_CONFIG = [
     { text: "Welcome", color: "#ffffff" },
@@ -55,8 +54,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div className='hero-container'>
-            <ParticleBackground />
+        <div className='hero-container snap-section'>
             
             <div className={`hero-top-label hero-content-fade ${isTypingComplete ? 'show' : ''}`}>
                 <span>HanZheng Club</span>

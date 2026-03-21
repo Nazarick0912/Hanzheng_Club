@@ -65,3 +65,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-top: 77px; /* Navbar height */
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: calc(100vh - 77px) !important;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  /* Transition enhancements for smooth scroll reveals */
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.snap-section.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

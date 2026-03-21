@@ -10,15 +10,29 @@ const ParticleBackground = () => {
 
         // Configuration
         const particles = [];
-        const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 180;
-        const colors = ['#ff6b6b', '#4dabf7', '#da77f2']; // Pink, Blue, Purple
-        const connectionDistance = 100;
+        // Increased particles significantly for a richer effect
+        const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 100 : 250;
+        const colors = [
+            { r: 255, g: 107, b: 107 }, // Pink
+            { r: 77, g: 171, b: 247 },  // Blue
+            { r: 218, g: 119, b: 242 }, // Purple
+            { r: 255, g: 212, b: 59 }   // Yellow
+        ];
+        const connectionDistance = 120;
         const mouse = { x: null, y: null, radius: 150 };
 
-        // Resize Canvas
+        let width = 0;
+        let height = 0;
+
+        // Resize Canvas and handle Retina/High-DPI displays for sharpness
         const resizeCanvas = () => {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
+            width = canvas.parentElement.clientWidth;
+            height = canvas.parentElement.clientHeight;
+            const dpr = window.devicePixelRatio || 1;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
         };
 
         window.addEventListener('resize', resizeCanvas);
@@ -36,25 +50,46 @@ const ParticleBackground = () => {
             mouse.y = null;
         };
 
+        // Click to Scatter Interaction
+        const handleMouseClick = () => {
+            if (mouse.x !== null && mouse.y !== null) {
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    const dx = p.x - mouse.x;
+                    const dy = p.y - mouse.y;
+                    const distSq = dx * dx + dy * dy;
+                    if (distSq < 40000) { // 200 radius for the blast
+                        const dist = Math.sqrt(distSq);
+                        const force = (200 - dist) / 200;
+                        // Apply strong velocity outwards
+                        p.oldX = p.x - (dx / dist) * force * 50;
+                        p.oldY = p.y - (dy / dist) * force * 50;
+                    }
+                }
+            }
+        };
+
         canvas.addEventListener('mousemove', handleMouseMove);
         canvas.addEventListener('mouseleave', handleMouseLeave);
+        canvas.addEventListener('click', handleMouseClick);
 
         // Particle Class (Verlet Integration)
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
                 // Add initial velocity offset for oldX/oldY
-                this.oldX = this.x - (Math.random() - 0.5) * 4;
-                this.oldY = this.y - (Math.random() - 0.5) * 4;
+                this.oldX = this.x - (Math.random() - 0.5) * 3;
+                this.oldY = this.y - (Math.random() - 0.5) * 3;
                 
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.radius = Math.random() * 2.5 + 1;
+                this.colorObj = colors[Math.floor(Math.random() * colors.length)];
+                this.color = `rgb(${this.colorObj.r}, ${this.colorObj.g}, ${this.colorObj.b})`;
+                this.radius = Math.random() * 2 + 0.8; // Slightly smaller for a crisp look
             }
 
             update() {
                 // Verlet velocity
-                let vx = (this.x - this.oldX) * 0.96; // 0.96 dampening (viscous fluid friction)
+                let vx = (this.x - this.oldX) * 0.96; // 0.96 dampening for smooth glide
                 let vy = (this.y - this.oldY) * 0.96;
 
                 this.oldX = this.x;
@@ -86,16 +121,16 @@ const ParticleBackground = () => {
                 if (this.x < 0) {
                     this.x = 0;
                     this.oldX = this.x + vx; 
-                } else if (this.x > canvas.width) {
-                    this.x = canvas.width;
+                } else if (this.x > width) {
+                    this.x = width;
                     this.oldX = this.x + vx;
                 }
 
                 if (this.y < 0) {
                     this.y = 0;
                     this.oldY = this.y + vy;
-                } else if (this.y > canvas.height) {
-                    this.y = canvas.height;
+                } else if (this.y > height) {
+                    this.y = height;
                     this.oldY = this.y + vy;
                 }
             }
@@ -105,8 +140,8 @@ const ParticleBackground = () => {
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 
-                // Add soft glow
-                ctx.shadowBlur = 10;
+                // Subtle sharper glow instead of heavy blur
+                ctx.shadowBlur = 4;
                 ctx.shadowColor = this.color;
                 
                 ctx.fill();
@@ -124,12 +159,10 @@ const ParticleBackground = () => {
 
         // Animation Loop
         const animate = () => {
-            // Semi-transparent clear for slight trail effect
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // If you want pure trails, use fillRect with rgba. 
-            // We use clearRect to keep the background image visible.
+            // Clear entirely each frame to avoid blur trails, achieving a sharper look
+            ctx.clearRect(0, 0, width, height);
 
-            // Build spatial grid or just O(N^2) for connections
+            // Build spatial grid or O(N^2) for connections
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
@@ -144,18 +177,42 @@ const ParticleBackground = () => {
                         const dist = Math.sqrt(distSq);
                         const opacity = 1 - dist / connectionDistance;
 
-                        // Pull them very slightly together mimicking surface tension / tethering
-                        const tetherForce = 0.001 * opacity;
+                        // Pull them very slightly together
+                        const tetherForce = 0.0008 * opacity;
                         particles[i].oldX += dx * tetherForce;
                         particles[i].oldY += dy * tetherForce;
                         particles[j].oldX -= dx * tetherForce;
                         particles[j].oldY -= dy * tetherForce;
 
+                        // Draw lines using the particle's own color combined with the opacity
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
-                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = `rgba(${particles[i].colorObj.r}, ${particles[i].colorObj.g}, ${particles[i].colorObj.b}, ${opacity * 0.4})`;
+                        ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+
+            // Draw interaction lines to mouse
+            if (mouse.x !== null && mouse.y !== null) {
+                for (let i = 0; i < particles.length; i++) {
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const distSq = dx * dx + dy * dy;
+
+                    if (distSq < 22500) { // 150 radius squared
+                        const dist = Math.sqrt(distSq);
+                        const opacity = 1 - dist / 150;
+
+                        ctx.beginPath();
+                        // Draw brightly colored line connecting to the cursor
+                        ctx.strokeStyle = `rgba(${particles[i].colorObj.r}, ${particles[i].colorObj.g}, ${particles[i].colorObj.b}, ${opacity * 0.8})`;
+                        ctx.lineWidth = 1.2; // Slightly thicker
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
                         ctx.stroke();
                         ctx.closePath();
                     }
@@ -172,6 +229,7 @@ const ParticleBackground = () => {
             window.removeEventListener('resize', resizeCanvas);
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mouseleave', handleMouseLeave);
+            canvas.removeEventListener('click', handleMouseClick);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
@@ -186,8 +244,8 @@ const ParticleBackground = () => {
                 width: '100%',
                 height: '100%',
                 zIndex: -1,
-                pointerEvents: 'auto', // Needs to capture mouse for repulsion
-                opacity: 0.85
+                pointerEvents: 'auto',
+                opacity: 1 // Full opacity for brighter, sharper particles
             }}
         />
     );
